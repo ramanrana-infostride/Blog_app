@@ -13,6 +13,7 @@ import Login from "./components/account/Login";
 import Home from "./components/Home/Home";
 import Header from "./components/header/Header";
 import { useState } from "react";
+import CreatePost from "./components/Create/CreatePost";
 
 const PrivateRoute = ({ isAuth, ...props }) => {
   return isAuth ? (
@@ -37,6 +38,11 @@ function App() {
             <Route path="/" element={<PrivateRoute isAuth={isAuth} />}>
               <Route path="/" element={<Home />} />
             </Route>
+
+            <Route path="/create" element={<PrivateRoute isAuth={isAuth} />}>
+              <Route path="/create" element={<CreatePost />} />
+            </Route>
+
           </Routes>
         </div>
       </BrowserRouter>

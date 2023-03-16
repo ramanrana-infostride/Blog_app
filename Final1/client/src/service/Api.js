@@ -1,6 +1,7 @@
 import axios from "axios";
 
-import { API_Notification_Messages, SERVICE_URLS } from "../constants/config";
+import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from "../constants/config";
+import { getAccessToken } from "../utils/common-utils";
 
 const API_URL = "http://localhost:8000";
 
@@ -51,7 +52,7 @@ const processError = (error) => {
     console.log("Error in Response", error.toJSON());
     return {
       isError: true,
-      msg: API_Notification_Messages.responseFailure,
+      msg: API_NOTIFICATION_MESSAGES.responseFailure,
       code: error.response.status,
     };
   } else if (error.request) {
@@ -59,7 +60,7 @@ const processError = (error) => {
     console.log("Error in Request", error.toJSON());
     return {
       isError: true,
-      msg: API_Notification_Messages.requestFailure,
+      msg: API_NOTIFICATION_MESSAGES.requestFailure,
       code: "",
     };
   } else {
@@ -67,7 +68,7 @@ const processError = (error) => {
     console.log("Network Error  ", error.toJSON());
     return {
       isError: true,
-      msg: API_Notification_Messages.netWorkError,
+      msg: API_NOTIFICATION_MESSAGES.netWorkError,
       code: "",
     };
   }
@@ -82,6 +83,9 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
       url: value.url,
       data: body,
       responseType: value.responseType,
+      headers:{
+        authorization:getAccessToken()
+      },
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
           let percentageCompleted = Math.round(

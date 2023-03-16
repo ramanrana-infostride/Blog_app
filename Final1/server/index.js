@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json({extended :true}))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use('/',Router);
-
+app.use(express.json({limit: '50mb'}));
 
 app.listen(port, function(err){
     if (err){

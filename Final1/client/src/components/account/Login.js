@@ -156,6 +156,7 @@ const Login = ({IsUserAuth}) => {
               onChange={onValueChange}
               name="email"
               value={login.email}
+              type="email"
             />
             <TextField
               variant="standard"
@@ -163,6 +164,7 @@ const Login = ({IsUserAuth}) => {
               onChange={onValueChange}
               name="password"
               value={login.password}
+              type="password"
             />
             {error && <Error>{error}</Error>}
             <LoginButton variant="contained" onClick={loginUser}>
@@ -181,6 +183,7 @@ const Login = ({IsUserAuth}) => {
               name="name"
               label="Enter Name"
               value={signUp.name}
+              type="text"
             />
             <TextField
               variant="standard"
@@ -188,6 +191,7 @@ const Login = ({IsUserAuth}) => {
               name="email"
               label="Enter Email"
               value={signUp.email}
+              type="email"
             />
             <TextField
               variant="standard"
@@ -195,6 +199,7 @@ const Login = ({IsUserAuth}) => {
               name="password"
               label="Enter Password"
               value={signUp.password}
+              type="password"
             />
 
             {error && <Error>{error}</Error>}
