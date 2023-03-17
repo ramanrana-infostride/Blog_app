@@ -14,6 +14,10 @@ import Home from "./components/Home/Home";
 import Header from "./components/header/Header";
 import { useState } from "react";
 import CreatePost from "./components/Create/CreatePost";
+import DetailView from "./components/details/DetailView";
+import Update from "./components/Create/Update";
+import About from "./components/about/About";
+import Contact from "./components/contact/Contact";
 
 const PrivateRoute = ({ isAuth, ...props }) => {
   return isAuth ? (
@@ -41,6 +45,23 @@ function App() {
 
             <Route path="/create" element={<PrivateRoute isAuth={isAuth} />}>
               <Route path="/create" element={<CreatePost />} />
+            </Route>
+
+            <Route path="/details/:id" element={<PrivateRoute isAuth={isAuth} />}>
+              <Route path="/details/:id" element={<DetailView />} />
+            </Route>
+
+
+            <Route path="/update/:id" element={<PrivateRoute isAuth={isAuth} />}>
+              <Route path="/update/:id" element={<Update />} />
+            </Route>
+
+            <Route path='/about' element={<PrivateRoute isAuth={isAuth} />} >
+              <Route path='/about' element={<About />} />
+            </Route>
+
+            <Route path='/contact' element={<PrivateRoute isAuth={isAuth} />} >
+              <Route path='/contact' element={<Contact />} />
             </Route>
 
           </Routes>

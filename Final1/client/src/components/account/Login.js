@@ -5,6 +5,8 @@ import { Button, TextField, styled, Typography } from "@mui/material";
 import { API } from "../../service/Api";
 import { DataContext } from "../../context/DataProvider";
 import { useNavigate } from "react-router-dom";
+
+
 const Container = styled(Box)`
   width: 500px;
   margin: auto;
@@ -97,7 +99,7 @@ const Login = ({IsUserAuth}) => {
   };
 
   const signUpUser = async () => {
-    let response = await API.userSignUp(signUp);
+    let response = await API.userSignup(signUp);
     if (response.isSuccess) {
       showError("");
       setSignUp(signupInitialValue);
